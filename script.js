@@ -33,7 +33,7 @@
             let menus = document.querySelectorAll(".site-header-brand")
             if (!menus) return false;
             for (let menu of menus) {
-                menu.parentNode.append(createButton("us-en","zh-cn","中文"))
+                menu.parentNode.append(createButton("en-us","zh-cn","中文"))
             }
             return true;
         })
@@ -44,7 +44,7 @@
             let menus = document.querySelectorAll(".site-header-brand")
             if (!menus) return false;
             for (let menu of menus) {
-                menu.parentNode.append(createButton("zh-cn","us-en","英文"))
+                menu.parentNode.append(createButton("zh-cn","en-us","英文"))
             }
             console.log(1)
             return true;
