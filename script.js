@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name         MsDocs LangButton
+// @name         Docs LangButton
 // @namespace    http://tampermonkey.net/
-// @version      0.1.2
+// @version      0.2.0
 // @description  try to take over the world!
-// @author       You
+// @author       sheng-ri
 // @match        https://learn.microsoft.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=microsoft.com
+// @match        https://*.cppreference.com/*
+// @icon         https://www.microsoft.com/favicon.ico?v2
 // @grant        none
 // ==/UserScript==
 
@@ -46,11 +47,21 @@
             for (let menu of menus) {
                 menu.parentNode.append(createButton("zh-cn","en-us","英文"))
             }
+            return true;
+        })
+    }
+    if (location.href.startsWith("https://learn.microsoft.com")) {
+        createChineseButton();
+        createEnglishButton();
+    }
+
+    if (location.href.startsWith("https://en.cppreference.com")) {
+         tryRun(() => {
+            let loc = document.querySelector("#cpp-head-first").children[0]
+            if (!loc) return false;
+            loc.append(createButton("en.cppreference.com","zh.cppreference.com","中文"))
             console.log(1)
             return true;
         })
     }
-    createChineseButton();
-    createEnglishButton();
-    // Your code here...
 })();
